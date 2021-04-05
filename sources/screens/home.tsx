@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { Linking, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 
 import { StackNavigationProp } from '@react-navigation/stack'
 
@@ -24,39 +24,43 @@ function Home(props: PropsType) {
         style={{
           alignItems: 'center',
           flex: 1,
-          justifyContent: 'center'
+          justifyContent: 'center',
+          padding: 20
         }}
       >
+        <Text
+          style = {{
+            textAlign: 'center'
+          }}
+        >
+          Whenever opening the app, your regid will be registered at
+        </Text>
+
         <TouchableOpacity
-          activeOpacity={0.8}
-          onPress = {() => navigation.navigate('PickImage')}
-          style={{
-            backgroundColor: 'dodgerblue',
-            borderRadius: 8,
-            elevation: 4,
-            marginHorizontal: 20,
-            marginTop: 20,
-            paddingHorizontal: 16,
-            paddingVertical: 8,
-            shadowColor: 'dimgray',
-            shadowOffset: {
-              height: 2,
-              width: 0
-            },
-            shadowOpacity: 0.3,
-            shadowRadius: 4
+          activeOpacity = {0.6}
+          onPress = {() => Linking.openURL('https://send-fcm-test-reynald.herokuapp.com/public')}
+          style = {{
+            marginVertical: 20
           }}
         >
           <Text
-            style={{
-              color: 'white',
-              fontSize: 20,
-              fontWeight: '500'
+            style = {{
+              color: 'blue',
+              textAlign: 'center',
+              textDecorationLine: 'underline'
             }}
           >
-            Go To Pick Image Screen
+            https://send-fcm-test-reynald.herokuapp.com/public
           </Text>
         </TouchableOpacity>
+
+        <Text
+          style = {{
+            textAlign: 'center'
+          }}
+        >
+          You can click the listed regid to send a notification handled by API
+        </Text>
       </View>
 
       <Text

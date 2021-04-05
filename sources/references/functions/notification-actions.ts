@@ -6,6 +6,17 @@ import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
 
 export function onGetToken(token: string) {
   console.log(`Token ${Platform.OS}: ${token}`)
+
+  fetch(
+    'https://send-fcm-test-reynald.herokuapp.com/register-regid',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({regid: token})
+    }
+  )
 }
 
 export function onMessageReceived(remoteMessage: FirebaseMessagingTypes.RemoteMessage, from: 'Foreground' | 'Background') {
